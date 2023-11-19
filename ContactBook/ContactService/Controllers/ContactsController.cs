@@ -2,6 +2,7 @@
 using ContactService.Entities;
 using ContactService.Enums;
 using MassTransit;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ReportService.Models;
@@ -26,9 +27,15 @@ namespace ContactService.Controllers
 		}
 
 		[HttpGet("{id}")]
-		public Contact Get(Guid id)
+		public IActionResult Get(Guid id)
 		{
-			return _context.Contacts.Where(x => x.Id == id).Include(x => x.ContactInformations).FirstOrDefault()!;
+			Contact contact = _context.Contacts.Where(x => x.Id == id).Include(x => x.ContactInformations).FirstOrDefault()!;
+
+			if (contact == null)
+			{
+				return NotFound();
+			}
+			return Ok(contact);
 		}
 
 		[HttpPost]
@@ -48,14 +55,17 @@ namespace ContactService.Controllers
 		}
 
 		[HttpDelete("{id}")]
-		public void Delete(Guid id)
+		public IActionResult Delete(Guid id)
 		{
 			var contact = _context.Contacts.Where(x => x.Id == id).FirstOrDefault()!;
-			if (contact != null)
+
+			if (contact == null)
 			{
-				_context.Contacts.Remove(contact);
-				_context.SaveChanges();
+				return NotFound();
 			}
+			_context.Contacts.Remove(contact);
+			_context.SaveChanges();
+			return NoContent();
 		}
 
 		[HttpPost("add-information")]

@@ -10,7 +10,10 @@ namespace ContactService.Data
 		{
 
 		}
+		public ApplicationDbContext()
+		{
 
+		}
 		public DbSet<ContactInformation> ContactInformations { get; set; }
 		public DbSet<Contact> Contacts { get; set; }
 
@@ -26,6 +29,20 @@ namespace ContactService.Data
 				.HasConversion(
 					v => v.ToString(),
 					v => (ContactInformationType)Enum.Parse(typeof(ContactInformationType), v));
+
+			modelBuilder.Entity<Contact>().HasData(
+						 new Contact
+						 {
+							 Id = Guid.Parse("64734e2b-bc91-45dd-ab07-652e77c161e9"),
+							 Name = "John",
+							 Surname = "Black",
+							 Company = "A Company"
+						 });
+		}
+
+		public void EnsureSeed()
+		{
+			throw new NotImplementedException();
 		}
 	}
 }

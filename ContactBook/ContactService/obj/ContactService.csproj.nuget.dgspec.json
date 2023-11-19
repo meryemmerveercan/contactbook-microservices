@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\meryem\\Desktop\\.net_projects\\ContactBook\\ContactService\\ContactService.csproj": {}
+    "C:\\Users\\meryem\\Desktop\\BE_PROJECT\\riseconsulting\\riseconsulting\\ContactBook\\ContactService\\ContactService.csproj": {}
   },
   "projects": {
-    "C:\\Users\\meryem\\Desktop\\.net_projects\\ContactBook\\ContactService\\ContactService.csproj": {
+    "C:\\Users\\meryem\\Desktop\\BE_PROJECT\\riseconsulting\\riseconsulting\\ContactBook\\ContactService\\ContactService.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\meryem\\Desktop\\.net_projects\\ContactBook\\ContactService\\ContactService.csproj",
+        "projectUniqueName": "C:\\Users\\meryem\\Desktop\\BE_PROJECT\\riseconsulting\\riseconsulting\\ContactBook\\ContactService\\ContactService.csproj",
         "projectName": "ContactService",
-        "projectPath": "C:\\Users\\meryem\\Desktop\\.net_projects\\ContactBook\\ContactService\\ContactService.csproj",
+        "projectPath": "C:\\Users\\meryem\\Desktop\\BE_PROJECT\\riseconsulting\\riseconsulting\\ContactBook\\ContactService\\ContactService.csproj",
         "packagesPath": "C:\\Users\\meryem\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\meryem\\Desktop\\.net_projects\\ContactBook\\ContactService\\obj\\",
+        "outputPath": "C:\\Users\\meryem\\Desktop\\BE_PROJECT\\riseconsulting\\riseconsulting\\ContactBook\\ContactService\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -74,9 +74,19 @@
               "target": "Package",
               "version": "[7.0.13, )"
             },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[13.0.3, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[7.0.11, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",

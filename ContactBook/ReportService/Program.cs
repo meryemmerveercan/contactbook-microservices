@@ -6,6 +6,10 @@ using ReportService.Clients;
 
 var builder = WebApplication.CreateBuilder(args);
 
+//var connectionString = builder.Configuration.GetConnectionString("DbContextConnection") ?? throw new InvalidOperationException("Connection string 'etkinlikyonetimiDbContextConnection' not found.");
+
+//builder.Services.AddDbContext<ReportDbContext>(options => options.UseNpgsql(connectionString));
+
 builder.Services.AddDbContext<ReportDbContext>(options => options.UseInMemoryDatabase("reportdb"));
 
 builder.Services.AddControllers();
@@ -38,6 +42,12 @@ builder.Services.AddHttpClient<ContactClient>(a =>
 });
 
 var app = builder.Build();
+
+using (var serviceScope = app.Services.CreateScope())
+{
+	var dbContext = serviceScope.ServiceProvider.GetRequiredService<ReportDbContext>();
+	//dbContext.Database.Migrate();
+}
 
 if (app.Environment.IsDevelopment())
 {

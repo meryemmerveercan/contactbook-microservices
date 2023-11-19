@@ -21,6 +21,11 @@ namespace ReportService.Controllers
 			_sendEndpointProvider = sendEndpointProvider;
 		}
 
+		public ReportsController(ReportDbContext context)
+		{
+			_context = context;
+		}
+
 		[HttpPost("create-report")]
 		public async Task<IActionResult> CreateReport([FromBody] string location)
 		{
